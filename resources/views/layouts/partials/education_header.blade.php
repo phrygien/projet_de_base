@@ -807,18 +807,18 @@
              <!--================================-->
              <li class="list-inline-item dropdown">
                 <a  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="select-profile">Hi, John!</span>
-                <img src="assets/images/avatar/avatar1.png" class="img-fluid wd-35 ht-35 rounded-circle" alt="">
+                <span class="select-profile">Bienvenue, {{ Auth::user()->name }}!</span>
+                <img src="{{ asset('assets/images/avatar/avatar1.png') }}" class="img-fluid wd-35 ht-35 rounded-circle" alt="">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-profile shadow-2">
                    <div class="user-profile-area">
                       <div class="user-profile-heading">
                          <div class="profile-thumbnail">
-                            <img src="assets/images/avatar/avatar1.png" class="img-fluid wd-35 ht-35 rounded-circle" alt="">
+                            <img src="{{ asset('assets/images/avatar/avatar1.png') }}" class="img-fluid wd-35 ht-35 rounded-circle" alt="">
                          </div>
                          <div class="profile-text">
-                            <h6>John Deo</h6>
-                            <span>email@example.com</span>
+                            <h6>{{ Auth::user()->name }}</h6>
+                            <span>{{ Auth::user()->email }}</span>
                          </div>
                       </div>
                       <a href="" class="dropdown-item"><i class="icon-user" aria-hidden="true"></i> My profile</a>
@@ -827,7 +827,11 @@
                       <a href="" class="dropdown-item"><i class="icon-share" aria-hidden="true"></i> My Activity <span class="badge badge-warning ft-right mg-t-3">5+</span></a>
                       <a href="" class="dropdown-item"><i class="icon-cloud-download" aria-hidden="true"></i> My Download <span class="badge badge-success ft-right mg-t-3">10+</span></a>
                       <a href="" class="dropdown-item"><i class="icon-heart" aria-hidden="true"></i> Support</a>
-                      <a href="page-singin.html" class="dropdown-item"><i class="icon-power" aria-hidden="true"></i> Sign-out</a>
+                      <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();"><i class="icon-power" aria-hidden="true"></i> Deconnecter</a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                     </form>
                    </div>
                 </div>
              </li>

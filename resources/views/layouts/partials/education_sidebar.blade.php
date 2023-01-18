@@ -1,8 +1,8 @@
 <div class="page-sidebar">
     <div class="logo">
        <a class="logo-img" href="index.html">		
-       <img class="desktop-logo" src="assets/images/logo.png" alt="">
-       <img class="small-logo" src="assets/images/small-logo.png" alt="">
+       <img class="desktop-logo" src="{{ asset('assets/images/logo.png') }}" alt="">
+       <img class="small-logo" src="{{ asset('assets/images/small-logo.png') }}" alt="">
        </a>			
        <i class="ion-ios-close-empty" id="sidebar-toggle-button-close"></i>
     </div>
