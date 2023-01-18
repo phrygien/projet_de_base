@@ -8,9 +8,9 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Users
+            <div class="card-header">
                 <span class="float-right">
-                    <a class="btn btn-primary" href="{{ route('users.create') }}">New User</a>
+                    <a class="btn btn-primary" href="{{ route('users.create') }}">{{ __('Créér') }}</a>
                 </span>
             </div>
             <div class="card-body">
