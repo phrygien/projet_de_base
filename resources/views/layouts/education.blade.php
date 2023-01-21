@@ -24,7 +24,7 @@
       <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}"/>
       <!-- Favicon -->	
       <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
-
+      @livewireStyles
             <!-- Footer Script -->
       <!--================================-->
       <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
@@ -86,5 +86,6 @@
       <a href="" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
       <!--/ Scroll To Top End -->
       <!--================================-->
+      @livewireScripts
    </body>
 </html>
