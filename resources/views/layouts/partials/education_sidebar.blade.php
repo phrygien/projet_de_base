@@ -14,28 +14,20 @@
           <ul class="accordion-menu">
              <li class="open active">
                 <a href=""><i data-feather="home"></i>
-                <span>Dashboard</span><i class="accordion-icon fa fa-angle-left"></i></a>
+                <span>{{ __('Tableau de bord') }}</span><i class="accordion-icon fa fa-angle-left"></i></a>
                 <ul class="sub-menu" style="display: block;">
-                   <li><a href="index.html">Sales</a></li>
-                   <li><a href="index2.html">Analytics</a></li>
-                   <li><a href="index3.html">Cryptocurrency</a></li>
-                   <li><a href="index4.html">Helpdesk</a></li>
-                   <li><a href="index5.html">Project</a></li>
-                   <li><a href="index6.html">Ecommerce</a></li>
-                   <li><a href="index7.html">Server</a></li>
                    <!-- Active Page -->
-                   <li class="active"><a href="index8.html">Education</a></li>
-                   <li><a href="index9.html">Event</a></li>
-                   <li><a href="index10.html">Social</a></li>
+                   <li class="active"><a href="{{ route('home') }}">{{ __('Education') }}</a></li>
                 </ul>
              </li>
+             <li class="menu-divider mg-y-20-force"></li>
+             <li class="mg-20-force menu-elements">{{ __('Accée et securité') }}</li>
              <li>
-                <a href=""><i data-feather="mail"></i>
-                <span>Mailbox</span><span class="badge badge-warning ft-right">10+</span></a>
+                <a href=""><i data-feather="key"></i>
+                <span>{{ __('Permission') }}</span><i class="accordion-icon fa fa-angle-left"></i></a>
                 <ul class="sub-menu">
-                   <li><a href="mailbox.html">Inbox</a></li>
-                   <li><a href="mailbox-message.html">View Mail</a></li>
-                   <li><a href="mailbox-compose.html">Compose Mail</a></li>
+                   <li><a href="{{ route('permissions.create') }}">{{ __('Créer') }}</a></li>
+                   <li><a href="{{ route('permissions.index') }}">{{ __('Liste') }}</a></li>
                 </ul>
              </li>
              <li>
