@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EcoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
@@ -29,4 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('posts', PostController::class);
+
+    //route école
+    Route::get('ecoles', [EcoleController::class, 'ecolePage'])->name('pageEcole');
 });

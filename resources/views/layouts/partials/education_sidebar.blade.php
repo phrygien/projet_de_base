@@ -46,6 +46,12 @@
                   <li><a href="{{ route('users.index') }}">{{ __('Liste') }}</a></li>
                </ul>
             </li>
+            <li class="menu-divider mg-y-20-force"></li>
+            <li class="mg-20-force menu-elements">{{ __('Plateforme') }}</li>
+            <li>
+               <a href="{{ route('pageEcole') }}"><i data-feather="package"></i>
+               <span>{{ __('Gestion écoles') }}</span></a>
+            </li>
              <li class="menu-divider mg-y-20-force"></li>
              <li class="mg-20-force menu-elements">Elements</li>
              <li>
@@ -182,14 +188,10 @@
                 </ul>
              </li>
              <li class="menu-divider mg-y-20-force"></li>
-             <li class="mg-20-force menu-others">Others</li>
+             <li class="mg-20-force menu-others">{{ __('Plateforme') }}</li>
              <li>
                 <a href="../documentation/documentation.html"><i data-feather="life-buoy"></i>
-                <span>Documentation</span></a>
-             </li>
-             <li>
-                <a href="../documentation/changelog.html"><i data-feather="coffee"></i>
-                <span>Changelog</span><span class="badge badge-primary ft-right">1.7</span></a>
+                <span>{{ __('Documentation') }}</span></a>
              </li>
           </ul>
        </div>
