@@ -42,10 +42,52 @@
                        @endcan
                     </div>
                     <div class="card-body collapse show" id="collapse1">
-
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                               <thead class="tx-10 tx-uppercase">
+                                  <tr>
+                                     <th>{{ __('No') }}</th>
+                                     <th>{{ __('Nom et prenoms') }}</th>
+                                     <th>{{ __('Email') }}</th>
+                                     <th>{{ __('Date création') }}</th>
+                                     <th>{{ __('Role(s)') }}</th>
+                                     <th class="tx-right">Action</th>
+                                  </tr>
+                               </thead>
+                               <tbody>
+                                @foreach ($data as $key => $user)
+                                  <tr>
+                                     <td>{{ $user->id }}</td>
+                                     <td>{{ $user->name }}</td>
+                                     <td>{{ $user->email }}</td>
+                                     <td>{{ $user->created_at }}</td>
+                                     <td>
+                                        @if(!empty($user->getRoleNames()))
+                                            @foreach($user->getRoleNames() as $val)
+                                            <span class="badge badge-outlined badge-primary">{{ $val }}</span>
+                                            @endforeach
+                                        @endif
+                                     </td>
+                                     <td class="tx-right">
+                                        <div class="dropdown">
+                                           <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-options"></i></a>
+                                           <ul class="dropdown-menu dropdown-menu-right">
+                                              <li class="dropdown-item"><a class="dropdown-link tx-13 tx-gray-500" href=""><i class="icon-pencil mr-2"></i>Edit</a></li>
+                                              <li class="dropdown-item"><a class="dropdown-link tx-13 tx-gray-500" href=""><i class="icon-close mr-2"></i>Remove</a></li>
+                                              <li class="dropdown-item"><a class="dropdown-link tx-13 tx-gray-500" href=""><i class="icon-action-redo mr-2"></i>Send Email</a></li>
+                                              <li class="dropdown-item"><a class="dropdown-link tx-13 tx-gray-500" href=""><i class="icon-cloud-download mr-2"></i>Export as PDF</a></li>
+                                              <li class="dropdown-item"><a class="dropdown-link tx-13 tx-gray-500" href=""><i class="icon-drawer mr-2"></i>Save as Bookmark</a></li>
+                                           </ul>
+                                        </div>
+                                     </td>
+                                  </tr>
+                                  @endforeach
+                               </tbody>
+                            </table>
+                         </div>
                      <nav>
                         <ul class="pagination justify-content-center">
-                           
+                            {{ $data->render() }}
                         </ul>
                      </nav>
                     </div>
