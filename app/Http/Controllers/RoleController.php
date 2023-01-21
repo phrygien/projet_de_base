@@ -29,7 +29,7 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Role::orderBy('id','DESC')->paginate(5);
+        $data = Role::orderBy('id','DESC')->with('permissions')->paginate(5);
 
         return view('roles.index', compact('data'));
     }
@@ -77,7 +77,7 @@ class RoleController extends Controller
         $role = Role::find($id);
         $rolePermissions = Permission::join('role_has_permissions', 'role_has_permissions.permission_id', 'permissions.id')
             ->where('role_has_permissions.role_id',$id)
-            ->get();
+            ->paginate(10);
     
         return view('roles.show', compact('role', 'rolePermissions'));
     }

@@ -12,7 +12,7 @@
     <div class="page-sidebar-inner">
        <div class="page-sidebar-menu">
           <ul class="accordion-menu">
-             <li class="open active">
+             <li class="open">
                 <a href=""><i data-feather="home"></i>
                 <span>{{ __('Tableau de bord') }}</span><i class="accordion-icon fa fa-angle-left"></i></a>
                 <ul class="sub-menu" style="display: block;">
@@ -31,9 +31,21 @@
                 </ul>
              </li>
              <li>
-                <a href="widgets.html"><i data-feather="layout"></i>
-                <span>Widgets</span><span class="badge badge-info ft-right">Hot</span></a>
-             </li>
+               <a href=""><i data-feather="shield"></i>
+               <span>{{ __('Roles') }}</span><i class="accordion-icon fa fa-angle-left"></i></a>
+               <ul class="sub-menu">
+                  <li><a href="{{ route('roles.create') }}">{{ __('Créer') }}</a></li>
+                  <li><a href="{{ route('roles.index') }}">{{ __('Liste') }}</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href=""><i data-feather="user"></i>
+               <span>{{ __('Utilisateurs') }}</span><i class="accordion-icon fa fa-angle-left"></i></a>
+               <ul class="sub-menu">
+                  <li><a href="{{ route('users.create') }}">{{ __('Créer') }}</a></li>
+                  <li><a href="{{ route('users.index') }}">{{ __('Liste') }}</a></li>
+               </ul>
+            </li>
              <li class="menu-divider mg-y-20-force"></li>
              <li class="mg-20-force menu-elements">Elements</li>
              <li>
