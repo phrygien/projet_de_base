@@ -221,7 +221,7 @@
                                </td>
                                <td>
                                     <button wire:click="edit({{ $ecole->id }})" class="btn btn-primary">{{ __('Editer') }}</button>
-                                    <a href="" class="btn btn-danger">{{ __('Supprimer') }}</a>
+                                    <button wire:click="delete({{ $ecole->id }})" class="btn btn-danger">{{ __('Supprimer') }}</button>
                                </td>
                             </tr>
                             @endforeach

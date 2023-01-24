@@ -119,4 +119,11 @@ class LivEcole extends Component
         session()->flash('message', 'Modification école bien enregistré');
         return redirect()->to('/ecoles');
     }
+
+    public function delete($id)
+    {
+        Ecole::find($id)->delete();
+        
+        session()->flash('message', 'Suppression avec succée');
+    }
 }
