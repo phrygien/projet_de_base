@@ -31,6 +31,14 @@
                       </div>
                    </div>
                    <div class="card-body collapse show" id="collapse1">
+                    @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+                    @if($updateMode)
+                        @include('livewire.ecoles.update-ecole')
+                    @else
                     <form wire:submit.prevent="submit" enctype="multipart/form-data">
                       <div class="form-layout form-layout-1">
                          <div class="row mg-b-25">
@@ -52,9 +60,16 @@
                             <!-- col-4 -->
                             <div class="col-lg-4">
                                <div class="form-group">
-                                  <label class="form-control-label active">{{ __('Logo école') }}: <span class="tx-danger">*</span></label>
-                                  <input class="form-control" type="file"  wire:model="ecole_logo" placeholder="">
-                                  @error('ecole_logo') <span class="text-danger">{{ $message }}</span> @enderror
+                                 <label class="form-control-label active">{{ __('Logo école') }}: <span class="tx-danger">*</span></label>
+                                 <div class="publisher bg-transparent">
+                                    @if($ecole_logo)
+                                       <img class="wd-36 rounded-circle avatar align-self-start"  src="{{ $ecole_logo->temporaryUrl() }}" alt="">
+                                    @else
+                                       <img class="wd-36 rounded-circle avatar align-self-start" src="assets/images/avatar/avatar1.png" alt="">
+                                    @endif
+                                    <input class="publisher-input" type="file" wire:model="ecole_logo">
+                                    @error('ecole_logo') <span class="text-danger">{{ $message }}</span> @enderror
+                                 </div>
                                </div>
                             </div>
                             <!-- col-4 -->
@@ -142,11 +157,12 @@
                          <!-- row -->
                          <div class="form-layout-footer">
                             <button class="btn btn-custom-primary" type="submit">Sauvegarder</button>
-                            <button class="btn btn-secondary">Cancel</button>
+                            <button class="btn btn-secondary" wire:click="resetInputFields()">Cancel</button>
                          </div>
                          <!-- form-layout-footer -->
                       </div>
                     </form>
+                    @endif
                    </div>
                 </div>
              </div>
@@ -168,28 +184,45 @@
                    </div>
                    <div class="card-body pd-0 collapse show" id="collapse6">
                     @if(count($ecoles) >0)
-                      <table class="table table-separated table-responsive-sm">
+                      <table class="table table-separated table-responsive-sm table-striped table-hover">
                          <thead>
                             <tr>
-                               <th>#</th>
-                               <th>User</th>
-                               <th>Sales</th>
+                               <th>{{ __('Ecole') }}</th>
+                               <th>{{ __('Télèphone') }}</th>
+                               <th>{{ __('Email') }}</th>
+                               <th>{{ __('Ville') }}</th>
+                               <th>{{ __('Adresse') }}</th>
+                               <th>{{ __('Status') }}</th>
+                               <th>{{ __('Actions') }}</th>
                             </tr>
                          </thead>
                          <tbody>
                             @foreach($ecoles as $ecole)
                             <tr>
-                               <th scope="row">1</th>
                                <td>
                                   <div class="d-flex">
-                                     <img class="wd-35 rounded-circle img-fluid" src="assets/images/user/user1.png" alt="">
+                                     <img class="wd-35 rounded-circle img-fluid" src="{{ asset('storage/'.$ecole->ecole_logo) }}" alt="">
                                      <div class="mg-l-10">
-                                        <p class="lh-1 mg-0">Flora L. Cherry</p>
-                                        <small>Designer</small>
+                                        <p class="lh-1 mg-0">{{ $ecole->ecole_name }}</p>
+                                        <small>{{ $ecole->ecole_code }}</small>
                                      </div>
                                   </div>
                                </td>
-                               <td>541</td>
+                               <td>{{ $ecole->telephone_ecole }}</td>
+                               <td>{{ $ecole->ecole_email }}</td>
+                               <td>{{ $ecole->ville }}</td>
+                               <td>{{ $ecole->adresse }}</td>
+                               <td>
+                                @if($ecole->status ==0)
+                                    <span class="badge badge-danger">{{ __('Desactivé') }}</span>
+                                @else
+                                    <span class="badge badge-success">{{ __('Activé') }}</span>
+                                @endif
+                               </td>
+                               <td>
+                                    <button wire:click="edit({{ $ecole->id }})" class="btn btn-primary">{{ __('Editer') }}</button>
+                                    <a href="" class="btn btn-danger">{{ __('Supprimer') }}</a>
+                               </td>
                             </tr>
                             @endforeach
                          </tbody>
@@ -197,6 +230,11 @@
                       @else
                         <h4 class="text-warning text-center">Auccune donnée disponible!</h4>
                       @endif
+                      <nav>
+                        <ul class="pagination justify-content-center">
+                           {{ $ecoles->links() }}
+                        </ul>
+                     </nav>
                    </div>
                 </div>
              </div>
