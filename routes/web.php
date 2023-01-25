@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnneescolaireController;
 use App\Http\Controllers\EcoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -33,4 +34,5 @@ Route::group(['middleware' => ['auth']], function() {
 
     //route école
     Route::get('ecoles', [EcoleController::class, 'ecolePage'])->name('pageEcole');
+    Route::get('anneescolaires', [AnneescolaireController::class, 'pageAnneescolaire'])->name('pageAnneescolaire');
 });

@@ -52,6 +52,10 @@
                <a href="{{ route('pageEcole') }}"><i data-feather="package"></i>
                <span>{{ __('Gestion écoles') }}</span></a>
             </li>
+            <li>
+               <a href="{{ route('pageAnneescolaire') }}"><i data-feather="calendar"></i>
+               <span>{{ __('Gestion annee scolaire') }}</span></a>
+            </li>
              <li class="menu-divider mg-y-20-force"></li>
              <li class="mg-20-force menu-elements">Elements</li>
              <li>
