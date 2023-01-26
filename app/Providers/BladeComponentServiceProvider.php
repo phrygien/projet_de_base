@@ -15,6 +15,7 @@ class BladeComponentServiceProvider extends ServiceProvider
     public function register()
     {
         Blade::component('layouts.education', 'education-layout');
+        Blade::component('layouts._education', '_education-layout');
     }
 
     /**
